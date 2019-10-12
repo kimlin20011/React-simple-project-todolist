@@ -1,68 +1,148 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React開發
 
-## Available Scripts
 
-In the project directory, you can run:
+## 專案安裝與下載
+```shell=
+git clone https://github.com/kimlin20011/React-simple-project-todolist.git
+npm install
+yarn start
+```
 
-### `yarn start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 開發環境
+* 安裝react 快速建制工具
+```
+npm install create-react-app
+```
+* 建立react 專案
+```
+create-react-app hello-react-app
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+* 啓動開發環境
+```
+cd hello-react-app
+npm start
+```
 
-### `yarn test`
+## 認識react
+* js-DOM屬性
+* css-DOM樣式
+* html
+* 底層：DOM
+* CDD 設計概念
+    * component driven development
+* 透過JSX實現虛擬DOM tree
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## ECMAScript介紹
+* var ：函數範圍
+* let：區塊範圍
+* const : 常數 - 與let效能沒有差異，但有語法上的意義
+* 樣板字串：``
+* 短路求值
+    * 可以回傳真的或假的值，或後面的函數
+* 結構賦值
+* pollyfill
+    * 填充技術
+    * 有些瀏覽器不支援ES6
+* babel工具
+    * 講程式碼翻譯成另外一種程式碼
+* webpack工具
+    * 將程式碼打包
+    * 開發程式下的打包與發布的打包不同
+* 上述工具都已經設定在create-react-app裡面了
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## React
+* JSX
+    * javascrpit能夠使用XML的語法
+    * 讓開發中能夠輕易描述元件的長相
+* 屬性、狀態
+* 建構式
+* 物件即將載入
+* 繪製
+* 物件已載入
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 012
+* 不能以index當作key
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 013開始實戰
+* 到2分49～
+* 在react src資料夾中新增components資料夾
+    * 在components資料夾中新增title.js物件
+* 要共用的資料應該要放在元件上層/用屬性state傳遞
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 014
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![](https://i.imgur.com/jRpIKHL.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* 下載
 
-## Learn More
+![](https://i.imgur.com/3y8Gznf.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* 在vscode打`rcc` + tab可以直接印出component段程式碼
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* 在vscode打`rpc` + tab可以直接印出purecomponent段程式碼
 
-### Code Splitting
+* 直接打`imp` + tab 可以輸出import 檔案的程式碼
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+* 繼承的class都要有構造函式
+    * constructor
+* 傳屬性：上層用state傳給下層
+* 陣列可以用map的方法
+* map可以迭代整個整列
+    * 透過函式內回傳的值組成心得陣列
+* react的list render後必須要給key
+* 14:53
+* 傳遞陣列，用state
+* createTodo
+    * 每當執行的時候把傳進來的東西他當作參數(text)
+    * 讓下層組件接受上層組件傳的東西
+    * todos: [...this.state.todos, text] //展開運算符
+![](https://i.imgur.com/HZAGg9i.png)
+* 使用bind寫 
+    * 將宣告完的function重新包裹並宣告
+    * 使用套件的`bnd`關鍵字
+* event.keyCode
+    * enter事件 => input要等於13
+* 使用array filter
+    * 迭代整個陣列並比對
 
-### Analyzing the Bundle Size
+![](https://i.imgur.com/7Gh9CMM.png)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+* 不要讓人家在你的github專案中看到react 送你的logo.svg等等
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## 015 React與樣式
+* css 使用方式
+    * 行內樣式
+    * 外部檔案
+* css前置處理器
+    * Stylus、Less或是Sass
+    * 問題：檔案大小
+* 以畫面元件驅動開發 
+```shell=
+npm install --save styled-components
+```
 
-### Advanced Configuration
+```javascript=
+import styled from 'styled-components';
+const Clickable = styled.span  
+cursor: pointer;
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+* 使用`styled-components`中的`styled` , `{keyframes }`
+    * keyframes為動畫
 
-### Deployment
+* 響應式網頁設計(RWD)
+    * `@media `
+    * css中，透過不同的螢幕長寬來達到不同的效果
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```
+@media (max-width: 700px) {
+  background: palevioletred;
+}
+```
+###### tags: `課程筆記`
