@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+import { createTodo } from '../actions';
+import { connect } from 'react-redux';  //將store裡面的state傳送進來
 
-export default class Form extends Component {
+class Form extends Component {
     constructor() {
         super()
         this.state = {
@@ -9,13 +11,13 @@ export default class Form extends Component {
         this.createTodo = this.createTodo.bind(this)
     }
     createTodo() {
-        if(!this.state.text){
+        if (!this.state.text) {
             return
         }
         this.props.createTodo(this.state.text)
         this.setState({
-            text:''
-        }) 
+            text: ''
+        })
     }
 
     handleChange(event) {
@@ -24,7 +26,7 @@ export default class Form extends Component {
         })
     }
 
-    handleKeyDown(event){   //輸入enter就代表input事件
+    handleKeyDown(event) {   //輸入enter就代表input事件
         // if(event.keyCode === 13){
         //     this.createTodo()
         // }
@@ -35,10 +37,10 @@ export default class Form extends Component {
         return (
             <div>
                 <input
-                    onChange={event => this.handleChange(event)} 
+                    onChange={event => this.handleChange(event)}
                     onKeyDown={event => this.handleKeyDown(event)}
-                    value = {this.state.text}
-                    />
+                    value={this.state.text}
+                />
                 <button
                     onClick={this.createTodo}
                 >新增</button>
@@ -46,3 +48,17 @@ export default class Form extends Component {
         )
     }
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        createTodo: text => {
+            dispatch(createTodo(text))
+        }
+    }
+}
+
+//只要處理新增，不需要接受任何資料，所以不需要mapStateToProps
+//用connect拿到provider提供的資料
+//將component與connect連結在一起
+//null是指mapStateToProps沒有的部分
+export default connect(null, mapDispatchToProps)(Form)
